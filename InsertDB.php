@@ -7,13 +7,12 @@
     $dbname = "smartirrigation";
 
     // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
     if ($conn->connect_error) {
         die("Database Connection failed: " . $conn->connect_error);
     }
 
-    //Get current date and time
 
     if(!empty($_POST['soilmoisture']))
     {

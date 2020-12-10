@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="jquery.min.js"></script>
-        <link rel="stylesheet" href="main2.css">
+        <link rel="stylesheet" href="main1.css">
         
         <script type="text/javascript" src="lib/jquery-2.0.3.js"></script>
         <script type="text/javascript" src="lib/globalize.min.js"></script>
@@ -14,9 +14,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<script>
-   
-             
+		<script>             
             var sensval = 0;
 			$(document).ready(function() {
                 
@@ -109,6 +107,25 @@
         
 	</head>
 	<body>
+         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark default-color">
+            <a class="navbar-brand" href="#"><img src="pictures/logo2.png" width="40px" alt="logo" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"  style=" color:#8CC63F;">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"  style=" color:#8CC63F;">Information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"  style=" color:#8CC63F;">Logout</a>
+                    </li>
+                </ul>>
+            </div>
+        </nav>
         <div class=" ">
             <h1 class="text-center page-title" >MULTISYS IRRIGATION SYSTEM</h1>
         </div>

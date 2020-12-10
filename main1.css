@@ -1,0 +1,57 @@
+body{
+background: #f12711;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right,#8CC63F, #39B54A);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right,  #8CC63F, #39B54A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.shad{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.page-title{
+    margin-top: 3%;
+    padding-top: 5%;
+    margin-bottom: 3%;
+    font-family: 'Anton', sans-serif;
+    font-size: 60px;    
+    color: white;
+    text-shadow: 2px 2px #8C6239;
+}
+.gauge-title{
+    font-family: 'Anton', sans-serif;
+    text-shadow: 1px 1px #0d6104;
+}
+.sm-gauge{
+    background-color: white;
+    padding: 10px;
+}
+.margin-block-right{
+    margin-right: 15%;
+}
+.margin-block-left{
+    margin-left: 15%;
+}
+.row, .cols{
+    margin-bottom: 2%;
+}
+@media only screen and (max-width: 693px) {
+      .page-title{
+        font-size: 30px;   
+        padding-top: 12%;   
+    }
+}
+@media only screen and (max-width: 649px) {
+      .page-title{  
+        margin-top: 10%;  
+    }
+}
+@media only screen and (max-width: 330px) {
+      .page-title{
+        font-size: 25px; 
+          margin-top: 15%; 
+    }
+}
+@media only screen and (max-width: 825px) {
+      .page-title{
+        padding-top: 8%;    
+    }
+}
