@@ -18,21 +18,17 @@
         <table class="table table-dark" >
             <tbody>
                 <tr>
-                    <th>id</th> 
-                    <th>Soil Moisture Value</th> 
-                    <th>Water Level</th> 
-                    <th>Date</th>
+                    <th>Operation</th> 
+                    <th>Pump</th> 
                 </tr>	
                 <?php
-                    $table = mysqli_query($conn, "SELECT id, Soil_Moisture_Val,waterlevel,Date FROM sensorlogs order by id DESC LIMIT 5 "); //nodemcu_ldr_table = Youre_table_name
+                    $table = mysqli_query($conn, "SELECT operation,pump FROM sensorlogs order by id DESC LIMIT 1 "); //nodemcu_ldr_table = Youre_table_name
                     while($row = mysqli_fetch_array($table))
                     {
                 ?>
                 <tr>
-                    <td><?php echo $row["id"]; ?></td>
-                    <td><?php echo $row["Soil_Moisture_Val"]; ?></td>
-                    <td><?php echo $row["waterlevel"]; ?></td>
-                    <td><?php echo $row["Date"]; ?></td>
+                    <td><?php echo $row["operation"]; ?></td>
+                    <td><?php echo $row["pump"]; ?></td>
                 </tr>
                 <?php
                     }

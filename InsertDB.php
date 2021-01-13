@@ -14,15 +14,17 @@
     }
 
 
-    if(!empty($_POST['soilmoisture']))
+    if(isset($_POST['soilmoisture']))
     {
 		$sens = $_POST['soilmoisture'];
-        $waterlevel = $_POST['waterlevel'];
+        $intensity = $_POST['intensity'];
+        $operation = $_POST['operation'];
+        $pump = $_POST['pump'];
 
-	    $sql = "INSERT INTO sensorlogs ( Soil_Moisture_Val,waterlevel) VALUES ('".$sens."','".$waterlevel."')"; //nodemcu_ldr_table = Youre_table_name
+	    $sql = "INSERT INTO sensorlogs ( Soil_Moisture_Val,intensity,operation,pump) VALUES ('".$sens."','".$intensity."','".$operation."','".$pump."')"; 
 
 		if ($conn->query($sql) === TRUE) {
-		    echo "OK";
+		    echo "nice";
 		} else {
 		    echo "Error: " . $sql . "<br>" . $conn->error;
 		}
