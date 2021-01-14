@@ -226,7 +226,7 @@
                 </div>
                 
                 <div class="col-lg-8 " >
-                    <table class=" table table-dark shad" style="margin-bottom:1vh">
+                    <table class=" table table-dark table-st shad" style="margin-bottom:1vh">
                         <thead>
                             <tr>
                                 <th>Operation</th> 

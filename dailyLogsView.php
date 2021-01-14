@@ -30,57 +30,16 @@
 							$("#cmb").html(data);
 						}
 					});
-                var seriesVal = [
-                                {  argumentField: "time", valueField: "pump", name: "Value",color: " #0d6104" },
-                                ];
-                var rangebarData = [];
-                function loadGraph(dateVal){
-                 jQuery.ajax({
-                    type:"GET",
-                    url: "getPumpActivity.php?dateVal="+dateVal,
-                    data:"",
-                    success:function(data) {
-                      var dataSM = JSON.parse(data);
-                        console.log(dataSM);
-                        rangebarData = dataSM;
-                        loadRangeBar(rangebarData);
-                         var smGraph = 
-                            $("#graph").dxChart({
-                                dataSource: dataSM,
-                                commonSeriesSettings: {
-                                    type: "stepline"
-                                },
-                                margin: {
-                                    bottom: 20
-                                },
-                                argumentAxis: {
-                                    valueMarginsEnabled: false,
-                                    discreteAxisDivisionMode: "crossLabels",
-                                    grid: {
-                                        visible: true
-                                    }
-                                },
-                                series: seriesVal,
-                                legend: {
-                                    verticalAlignment: "bottom",
-                                    horizontalAlignment: "center",
-                                    itemTextPosition: "bottom"
-                                },
-                                title: { 
-                                    text: "Pump Activity",
-
-                                },
-                                "export": {
-                                    enabled: true
-                                },
-                                tooltip: {
-                                    enabled: true
-                                }
-                            }).dxChart("instance");
-                    }
-
-                });
                 
+                function loadGraph(dateVal){
+                    jQuery.ajax({
+						type:"GET",
+						url: "getDailyLogs.php?dateVal="+dateVal,
+						data:"",
+						success:function(data) {
+							$("#table").html(data);
+						}
+					});
 				}
                 jQuery.ajax({
                     type:"GET",
@@ -91,31 +50,6 @@
                         loadGraph(JSON.parse(data)[0]);
                     }
                 });
-                 function loadRangeBar(rangebarData){
-                    $("#rangeSelector").dxRangeSelector({
-                        size: {
-                            height: 120
-                        },
-                        margin: {
-                            left: 10
-                        },
-                        scale: {
-                            minorTickCount:1
-                        },
-                        dataSource: rangebarData,
-                        chart: {
-                            series: seriesVal,
-                            palette: "Harmony Light"
-                        },
-                        behavior: {
-                            callValueChanged: "onMoving"
-                        },
-                        onValueChanged: function (e) {
-                            var zoomedChart = $("#graph").dxChart("instance");
-                            zoomedChart.getArgumentAxis().visualRange(e.value);
-                        }
-                    });
-                }
                 var getDateBtn = document.getElementsByClassName('go-button')[0];
                 getDateBtn.addEventListener('click', function(event){
                     var buttonParent = event.target.parentElement;
@@ -163,17 +97,15 @@
                 </div>
                 <div class="col-lg-10">
                     <br/>
-                    <h1 class="text-center page-title2" >Pump Activity</h1>
+                    <h1 class="text-center page-title2" >Daily Logs</h1>
                     <div class="margin-container bg-white cmb-cont" >
                         <div class="row">
                             <div id="cmb" class="cmb" ></div>
                             <button class="go-button btn btn-sm btn-primary ml-2" > GO </button>
                         </div>
                     </div> 
-                    <div class="graph margin-container">
-                        <div id="graph" class="" style="padding-left:5%;padding-right:5%;height:75%">
-                        </div>
-                        <div id="rangeSelector" class="" style="padding-left:5%;padding-right:5%;height:100%">
+                    <div class="graph table">
+                        <div id="table" class="">
                         </div>
                     </div>
                 </div>

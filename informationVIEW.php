@@ -30,7 +30,10 @@
 							$("#cmb").html(data);
 						}
 					});
-                
+                var seriesVal =  [
+                                { argumentField: "time",valueField: "Soil_Moisture_Val", name: "Value",color: " #0d6104" },
+                                ];
+                var rangebarData = [];
                 function loadGraph(dateVal){
                  jQuery.ajax({
                     type:"GET",
@@ -42,15 +45,15 @@
                         var convDataSMl = [];
                         for(var i  = 0; i < dataSM.length ; i++){
                             var element = {};
-                            convDataSMl.push({"id": parseInt(dataSM[i]["id"]), "Soil_Moisture_Val": parseInt(dataSM[i]["Soil_Moisture_Val"])});
+                            convDataSMl.push({"time": dataSM[i]["time"], "Soil_Moisture_Val": parseInt(dataSM[i]["Soil_Moisture_Val"])});
                         }
-    //                            console.log(convDataSMl);
+                        rangebarData = convDataSMl;
+                        loadRangeBar(rangebarData);
                          var smGraph = 
                             $("#graph").dxChart({
                                 dataSource: convDataSMl,
                                 commonSeriesSettings: {
-                                    argumentField: "id",
-                                    type: "line"
+                                    type: "spline"
                                 },
                                 margin: {
                                     bottom: 20
@@ -62,10 +65,7 @@
                                         visible: true
                                     }
                                 },
-                                series: [
-                                    { valueField: "Soil_Moisture_Val", name: "Value",color: " #0d6104" },
-
-                                ],
+                                series:seriesVal,
                                 legend: {
                                     verticalAlignment: "bottom",
                                     horizontalAlignment: "center",
@@ -85,14 +85,54 @@
                     }
 
                 });
+                
 				}
-                var getDateBtn = document.getElementsByClassName('go-button')[0];
-                getDateBtn.addEventListener('click', function(event){
+                
+                jQuery.ajax({
+                    type:"GET",
+                    url: "getLatestDate.php",
+                    data:"",
+                    success:function(data) {
+                       // console.log(JSON.parse(data)[0]);
+                        loadGraph(JSON.parse(data)[0]);
+                    }
+                });
+                function loadRangeBar(rangebarData){
+                    $("#rangeSelector").dxRangeSelector({
+                        size: {
+                            height: 120
+                        },
+                        margin: {
+                            left: 10
+                        },
+                        scale: {
+                            minorTickCount:1
+                        },
+                        dataSource: rangebarData,
+                        chart: {
+                            series: seriesVal,
+                            palette: "Harmony Light"
+                        },
+                        behavior: {
+                            callValueChanged: "onMoving"
+                        },
+                        onValueChanged: function (e) {
+                            var zoomedChart = $("#graph").dxChart("instance");
+                            zoomedChart.getArgumentAxis().visualRange(e.value);
+                        }
+                    });
+                }
+                function getCmb(event){
                     var buttonParent = event.target.parentElement;
                     var dateCMB = buttonParent.getElementsByClassName('date')[0];
                    var str = dateCMB.options[dateCMB.selectedIndex].text;
                     loadGraph(str);
-                })
+                }
+                var getDateBtn = document.getElementsByClassName('go-button')[0];
+                getDateBtn.addEventListener('click', function(event){
+                    getCmb(event);
+                    
+                });
 			});
             
             
@@ -119,10 +159,16 @@
         
         <div class="container-fluid ">
             <div class="row">
-                <div class="col-lg-2 sidebar text-center">
-                    <a href="informationVIEW.php" class="sidebar-link">Daily Graph</a>
-                    <br/>
-                    <a href="pumpActivityVIEW.php" class="sidebar-link">Pump Activity</a>
+                <div class="col-lg-2 sidebar">
+                    <div class="row mx-auto">
+                        <a href="informationVIEW.php" class="sidebar-link" >Daily Graph</a>
+                    </div> 
+                    <div class="row mx-auto">
+                        <a href="dailyLogsView.php" class="sidebar-link">Daily Logs</a>
+                    </div> 
+                    <div class="row mx-auto ">
+                        <a href="pumpActivityVIEW.php" class="sidebar-link">Pump Activity</a>
+                    </div> 
                     <br/><br/>
                 </div>
                 <div class="col-lg-10">
@@ -135,7 +181,9 @@
                         </div>
                     </div> 
                     <div class="graph margin-container">
-                        <div id="graph" class="" style="padding-left:5%;padding-right:5%;height:100%">
+                        <div id="graph" class="" style="padding-left:5%;padding-right:5%;height:75%">
+                        </div>
+                        <div id="rangeSelector" class="" style="padding-left:5%;padding-right:5%;height:100%">
                         </div>
                     </div>
                 </div>
