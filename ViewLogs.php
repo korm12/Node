@@ -48,7 +48,7 @@
                         ]
                     },
                     size: {
-                        height:300,
+                        height:270,
                         width:"100%"
                         },
 
@@ -81,7 +81,7 @@
                         ]
                     },
                                 size: {
-                        height:300,
+                        height:270,
                         width:"100%"
                         },
 

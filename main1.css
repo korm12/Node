@@ -58,6 +58,7 @@ height:100%;
 }
 .circ-gauge{
     width: 100%;
+  
     min-height: 36vh;
 
      background-color: white;
@@ -152,3 +153,4 @@ height:100%;
         overflow: hidden;
     }
 }
+

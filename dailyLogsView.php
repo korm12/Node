@@ -57,6 +57,21 @@
                    var str = dateCMB.options[dateCMB.selectedIndex].text;
                     loadGraph(str);
                 })
+                
+                function printData()
+                {
+                   var divToPrint=document.getElementById("table");
+                   
+                   window.document.write(divToPrint.outerHTML);
+                   window.print();
+                   window.close();
+                   location.reload();
+                   return false;
+                }
+
+                $('#print-button').on('click',function(){
+                printData();
+                })
 			});
             
             
@@ -102,6 +117,7 @@
                         <div class="row">
                             <div id="cmb" class="cmb" ></div>
                             <button class="go-button btn btn-sm btn-primary ml-2" > GO </button>
+                            <button class="print-button btn btn-sm btn-primary ml-2" id="print-button" > PRINT </button>
                         </div>
                     </div> 
                     <div class="graph table">

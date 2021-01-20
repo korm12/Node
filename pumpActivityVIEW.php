@@ -171,9 +171,9 @@
                         </div>
                     </div> 
                     <div class="graph margin-container">
-                        <div id="graph" class="" style="padding-left:5%;padding-right:5%;height:75%">
+                        <div id="graph" class="" style="padding-left:5%;padding-right:5%;height:70%">
                         </div>
-                        <div id="rangeSelector" class="" style="padding-left:5%;padding-right:5%;height:100%">
+                        <div id="rangeSelector" class="" style="padding-left:5%;padding-right:5%;height:24%">
                         </div>
                     </div>
                 </div>
